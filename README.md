@@ -24,20 +24,29 @@ You can install Boost via your package manager or manually:
 **Linux (apt example):**
 ```bash
 sudo apt install libboost-all-dev
+```
+
 
 **Windows (vcpkg example):**
+```bash
 vcpkg install boost-system boost-thread
-2. Configure CMake
-Option A – Use find_package
+```
+
+### 2. Configure CMake
+**Option A – Use find_package**
 If Boost is installed in a standard location:
+```cmake
 find_package(Boost REQUIRED COMPONENTS system thread)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 endif()
-Option B – Manually add Boost with add_library
+```
+
+**Option B – Manually add Boost with add_library**
 If you have Boost built locally and want to link manually:
+```cmake
 add_library(boost_system STATIC IMPORTED)
 set_target_properties(boost_system PROPERTIES
     IMPORTED_LOCATION "/path/to/boost/stage/lib/libboost_system.a"
@@ -51,18 +60,29 @@ set_target_properties(boost_thread PROPERTIES
 )
 
 target_link_libraries(${PROJECT_NAME} boost_system boost_thread)
-3. Build
+```
+
+### 3. Build
+```bash
 cmake -B build
 cmake --build build
-▶ Running
+```
+
+## ▶ Running
 Start the server:
+```bash
 ./BoostServer 12345
 Run the Python client:
-python client.py
-📚 Notes
+python main.py
+```
+
+
+## 📚 Notes
 The server uses Boost.Asio for asynchronous networking.
 
 The Python client can be adapted to send/receive messages in your chosen protocol.
 
 On Windows, you may need to link ws2_32 and mswsock:
+```cmake
 target_link_libraries(${PROJECT_NAME} ws2_32 mswsock)
+```
