@@ -1,17 +1,5 @@
-//
-// Created by nematpour on 8/26/2025.
-//
-
-#ifndef BOOSTSERVER_SERVER_H
-#define BOOSTSERVER_SERVER_H
-
-
-#include <boost/asio.hpp>
-#include <iostream>
-#include <memory>
-#include <string>
-
-using boost::asio::ip::tcp;
+#pragma once
+#include "Session.h"
 
 class Server {
 public:
@@ -21,10 +9,20 @@ public:
     }
 
 private:
-    void do_accept();
+    void do_accept() {
+        acceptor_.async_accept(
+                [this](boost::system::error_code ec, tcp::socket socket) {
+                    if (!ec) {
+                        auto session = std::make_shared<Session>(
+                                std::move(socket), sessions_, names_, mutex_);
+                        session->start();
+                    }
+                    do_accept();
+                });
+    }
 
     tcp::acceptor acceptor_;
+    std::set<std::shared_ptr<Session>> sessions_;
+    std::map<std::shared_ptr<Session>, std::string> names_;
+    std::mutex mutex_;
 };
-
-
-#endif //BOOSTSERVER_SERVER_H
