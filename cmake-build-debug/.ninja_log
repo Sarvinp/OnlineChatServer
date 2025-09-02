@@ -1,0 +1,12 @@
+# ninja log v5
+0	233	7785042322155868	CMakeFiles/BoostServer.dir/Server.cpp.obj	44b1f5cb0ce8df56
+8	235	7785042322145897	CMakeFiles/BoostServer.dir/Session.cpp.obj	1b181552d5076c4
+4	5758	7785042377354208	CMakeFiles/BoostServer.dir/main.cpp.obj	b303f47ac4451bd1
+5766	7716	7785042397032087	BoostServer.exe	ac2997df0e63d769
+13	4725	7785047525900289	CMakeFiles/BoostServer.dir/main.cpp.obj	b303f47ac4451bd1
+8	197	7785048129012067	CMakeFiles/BoostServer.dir/Server.cpp.obj	44b1f5cb0ce8df56
+13	6092	7785048188245288	CMakeFiles/BoostServer.dir/main.cpp.obj	b303f47ac4451bd1
+6093	8232	7785048209723266	BoostServer.exe	ac2997df0e63d769
+7	128	7785048604155642	CMakeFiles/BoostServer.dir/Server.cpp.obj	44b1f5cb0ce8df56
+11	3857	7785048641475446	CMakeFiles/BoostServer.dir/Session.cpp.obj	1b181552d5076c4
+3857	5966	7785048662536249	BoostServer.exe	ac2997df0e63d769
